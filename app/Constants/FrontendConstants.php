@@ -7,6 +7,6 @@ namespace App\Constants;
 class FrontendConstants
 {
     const URLS = [
-        "SSO" => "/sso/?token={token}",
+        "SSO" => "/?token={token}",
     ];
 }
