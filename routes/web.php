@@ -17,7 +17,7 @@ use \App\Http\Controllers\AuthController;
 
 Route::group([], function () {
     Route::group(["prefix" => "auth"], function () {
-        Route::get("sso-redirect/{service}", [AuthController::class, 'ssoRedirect'])->name("auth.sso.redirect");
-        Route::get("sso-callback/{service}", [AuthController::class, 'ssoCallback'])->name("auth.sso.callback");
+        Route::get("sso-redirect/{service}", [AuthController::class, 'ssoRedirect'])->name("auth.sso-redirect");
+        Route::get("sso-callback/{service}", [AuthController::class, 'ssoCallback'])->name("auth.sso-callback");
     });
 });
