@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::group([], function () {
+    Route::group(["prefix" => "auth"], function () {
+        Route::get("sso-redirect/{service}", [AuthController::class, 'ssoRedirect'])->name("auth.sso-redirect");
+        Route::get("sso-callback/{service}", [AuthController::class, 'ssoCallback'])->name("auth.sso-callback");
+    });
 });
