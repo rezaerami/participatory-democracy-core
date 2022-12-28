@@ -5,9 +5,9 @@ namespace App\Http\Requests\AuthRequests;
 use App\Constants\CommonEnums;
 use App\Constants\HttpStatus;
 use App\Helpers\Response;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\BaserRequest;
 
-class AuthSsoRedirectRequest extends FormRequest
+class AuthSsoRedirectRequest extends BaserRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,5 @@ class AuthSsoRedirectRequest extends FormRequest
         } catch (\Exception $e) {
             throw Response::error($e->getCode(), $e->getMessage());
         }
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        return [
-            //
-        ];
     }
 }

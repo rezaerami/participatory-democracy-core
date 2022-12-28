@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Constants\FrontendConstants;
+use App\Constants\HttpStatus;
 use App\Helpers\Response;
+use App\Http\Requests\AuthRequests\AuthLogoutRequest;
+use App\Http\Requests\AuthRequests\AuthRefreshTokenRequest;
 use App\Http\Requests\AuthRequests\AuthSsoCallbackRequest;
 use App\Http\Requests\AuthRequests\AuthSsoRedirectRequest;
 use App\Services\UserServices;
@@ -52,6 +55,33 @@ class AuthController extends Controller
                     "{token}" => $token,
                 ]));
 
+        } catch (\Exception $e) {
+            throw Response::error($e->getCode(), $e->getMessage());
+        }
+    }
+
+    public function refreshToken(AuthRefreshTokenRequest $request)
+    {
+        try {
+            $results = [
+                'token' => auth()->refresh()
+            ];
+
+            return Response::success($results);
+        } catch (\Exception $e) {
+            throw Response::error($e->getCode(), $e->getMessage());
+        }
+    }
+
+    public function logout(AuthLogoutRequest $request)
+    {
+        try {
+            auth()->invalidate($request->header("Authorization"));
+
+            $results = [
+                "message" => HttpStatus::TITLE[HttpStatus::OK],
+            ];
+            return Response::success($results);
         } catch (\Exception $e) {
             throw Response::error($e->getCode(), $e->getMessage());
         }
