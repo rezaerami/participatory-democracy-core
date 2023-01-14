@@ -22,9 +22,9 @@ class UserTransformer extends TransformerAbstract
     public function transform(User $model)
     {
         return [
-            'name'          => $model->name,
-            'username'      => $model->username,
-            'email'         => $model->email,
+            'name'          => (string) $model->name,
+            'username'      => (string) $model->username,
+            'email'         => (string) $model->email,
         ];
     }
 }

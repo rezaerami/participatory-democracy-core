@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Presentable;
 use Prettus\Repository\Traits\PresentableTrait;
 
-class Base extends Model implements Presentable
+class BaseModel extends Model implements Presentable
 {
     use HasFactory, SoftDeletes, PresentableTrait;
 
@@ -26,7 +26,7 @@ class Base extends Model implements Presentable
      */
     public function updatedBy()
     {
-        return $this->belongsTo(User::class, 'updatedBy');
+        return $this->belongsTo(User::class, 'updated_by');
     }
 
     /**

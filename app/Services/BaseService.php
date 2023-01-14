@@ -32,22 +32,22 @@ class BaseService
 
     /**
      * @param $attributes
-     * @param $userId
+     * @param $id
      * @return LengthAwarePaginator|Collection|mixed
      * @throws ValidatorException
      */
-    public function update($attributes, $userId)
+    public function update($attributes, $id)
     {
-        return $this->repository->update($attributes, $userId);
+        return $this->repository->update($attributes, $id);
     }
 
     /**
-     * @param $userId
+     * @param $id
      * @return LengthAwarePaginator|Collection|mixed
      */
-    public function show($userId)
+    public function show($id)
     {
-        return $this->repository->find($userId);
+        return $this->repository->find($id);
     }
 
     /**
@@ -60,15 +60,15 @@ class BaseService
     }
 
     /**
-     * @param $userId
+     * @param $id
      * @return LengthAwarePaginator|Collection|mixed
      */
-    public function delete($userId)
+    public function delete($id)
     {
-        $user = $this->show($userId);
-        $this->repository->delete($userId);
+        $entity = $this->show($id);
+        $this->repository->delete($id);
 
-        return $user;
+        return $entity;
     }
 
     /**
@@ -77,5 +77,10 @@ class BaseService
     public function count()
     {
         return $this->repository->count();
+    }
+
+    public function getByHashId($code)
+    {
+        return $this->repository->getByHashId($code);
     }
 }

@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Contracts\Repositories\BaseRepository;
 use App\Helpers\StringHelpers;
-use App\Models\Base;
+use App\Models\BaseModel;
 use Prettus\Repository\Eloquent\BaseRepository as PrettusBaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 
@@ -24,7 +24,7 @@ class BaseRepositoryEloquent extends PrettusBaseRepository implements BaseReposi
      */
     public function model()
     {
-        return Base::class;
+        return BaseModel::class;
     }
 
 

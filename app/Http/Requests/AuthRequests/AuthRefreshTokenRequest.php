@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\AuthRequests;
 
-use App\Http\Requests\BaserRequest;
+use App\Http\Requests\BaseRequest;
 
-class AuthRefreshTokenRequest extends BaserRequest
+class AuthRefreshTokenRequest extends BaseRequest
 {
     /**
      * Get the validation rules that apply to the request.
