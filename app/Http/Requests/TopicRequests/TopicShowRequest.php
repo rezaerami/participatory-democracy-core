@@ -29,7 +29,10 @@ class TopicShowRequest extends BaseRequest
         try {
             $topic = $this->topicServices->getByHashId($this->topicCode);
 
-            return $this->user()->can("view", $topic);
+            if (isset($this->user))
+                return $this->user()->can("view", $topic);
+
+            return true;
         } catch (ModelNotFoundException $e) {
             throw Response::error(HttpStatus::NOT_FOUND, HttpStatus::TITLE[HttpStatus::NOT_FOUND]);
         } catch (\Exception $e) {

@@ -40,6 +40,8 @@ class TopicTransformer extends TransformerAbstract
             'title'             => (string) $model->title,
             'description'       => (string) $model->description,
             'content'           => (string) $model->content,
+            'polisId'           => (string) $model->polis_id,
+            'polisSiteId'       => (string) $model->polis_site_id,
             'image'             => (string) $model->image ? asset("/storage".FileConstants::FILE_PATHS["TOPICS"].$model->image) : null,
             'published'         => (boolean) $model->published,
             'user'              => $this->userPresenter->present($model->user)["data"],

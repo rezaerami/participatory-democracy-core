@@ -36,8 +36,8 @@ class TopicsController extends Controller
             $offset = $request->input("offset", RequestConstants::DEFAULT_OFFSET);
             $limit = $request->input("limit", RequestConstants::MAX_LIMIT);
 
-            $topics = $this->topicServices->all($offset, $limit);
-            $topicsCount = $this->topicServices->count();
+            $topics = $this->topicServices->getPublishedTopics($offset, $limit);
+            $topicsCount = $this->topicServices->getPublishedTopicsCount();
 
             $topicPresenter = new TopicPresenter();
             $results = $topicPresenter->present($topics)["data"];
@@ -58,7 +58,7 @@ class TopicsController extends Controller
         try {
             $user = auth()->user();
 
-            $attributes = $request->except(["image", "polis_id"]);
+            $attributes = $request->except(["image", "polis_id", "polis_comments"]);
 
             $attributes["user_id"] = $user->id;
             $attributes["slug"] = StringHelpers::slugify(
@@ -68,6 +68,7 @@ class TopicsController extends Controller
                 $request->image,
                 FileConstants::FILE_PATHS["TOPICS"]
             )["filename"];
+            $attributes["polis_comments"] = json_encode($request->polis_comments);
 
             $topic = $this->topicServices->create($attributes);
             $results = $topic->presenter()["data"];

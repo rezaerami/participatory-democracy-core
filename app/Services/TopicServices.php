@@ -16,14 +16,14 @@ class TopicServices extends BaseService
         $this->repository = $repository;
     }
 
-    public function all($offset, $limit)
+    public function getPublishedTopics($offset, $limit)
     {
         return $this->repository->findWhere(["published" => true])
             ->skip($offset)
             ->take($limit);
     }
 
-    public function count()
+    public function getPublishedTopicsCount()
     {
         return $this->repository->findWhere(["published" => true])->count();
     }

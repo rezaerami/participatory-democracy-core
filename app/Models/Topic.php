@@ -26,6 +26,8 @@ class Topic extends BaseModel implements Presentable
         "content",
         "image",
         "user_id",
+        "polis_description",
+        "polis_comments",
     ];
 
     public function user()

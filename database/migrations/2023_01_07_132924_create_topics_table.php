@@ -24,6 +24,9 @@ class CreateTopicsTable extends Migration
             $table->longText("content");
             $table->string("image");
             $table->string("polis_id")->nullable();
+            $table->string("polis_site_id")->nullable();
+            $table->string("polis_description");
+            $table->json("polis_comments")->nullable();
             $table->boolean("published")->default(false);
 
             $table->unsignedBigInteger('user_id');

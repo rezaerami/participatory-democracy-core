@@ -46,7 +46,7 @@ class TopicUpdateRequest extends BaseRequest
     {
         return [
             "title" => "string",
-            "description" => "string|max:255|nullable",
+            "description" => "string|max:255",
             "content" => "string",
             "image" => [
                 "image",
