@@ -20,7 +20,7 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => array_merge(
-        [env('frontend_url')],
+        [env('FRONTEND_URL')],
         explode(",", env("CORS_WHITELIST"))
     ),
 
