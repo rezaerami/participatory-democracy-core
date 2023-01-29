@@ -4,7 +4,7 @@ namespace App\Http\Requests\UserRequests;
 
 use App\Http\Requests\BaseRequest;
 
-class UserProfileRequest extends BaseRequest
+class UserTopicsRequest extends BaseRequest
 {
     //
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\AuthRequests;
 
-use App\Http\Requests\BaserRequest;
+use App\Http\Requests\BaseRequest;
 
-class AuthLogoutRequest extends BaserRequest
+class AuthLogoutRequest extends BaseRequest
 {
     //
 }

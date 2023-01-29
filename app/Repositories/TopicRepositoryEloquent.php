@@ -2,17 +2,17 @@
 
 namespace App\Repositories;
 
-use App\Presenters\UserPresenter;
+use App\Presenters\TopicPresenter;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Contracts\Repositories\UserRepository;
-use App\Models\User;
+use App\Contracts\Repositories\TopicRepository;
+use App\Models\Topic;
 
 /**
- * Class UserRepositoryEloquent.
+ * Class TopicRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class UserRepositoryEloquent extends BaseRepositoryEloquent implements UserRepository
+class TopicRepositoryEloquent extends BaseRepositoryEloquent implements TopicRepository
 {
     /**
      * Specify Model class name
@@ -21,8 +21,9 @@ class UserRepositoryEloquent extends BaseRepositoryEloquent implements UserRepos
      */
     public function model()
     {
-        return User::class;
+        return Topic::class;
     }
+
 
     /**
      * Boot up the repository, pushing criteria
@@ -34,6 +35,6 @@ class UserRepositoryEloquent extends BaseRepositoryEloquent implements UserRepos
 
     public function presenter()
     {
-        return UserPresenter::class;
+        return TopicPresenter::class;
     }
 }

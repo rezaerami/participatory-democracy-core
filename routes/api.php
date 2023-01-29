@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use \App\Http\Controllers\AuthController;
 use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\TopicsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,17 @@ Route::group(["prefix" => "auth"], function () {
 
 Route::group(["prefix" => "users"], function () {
     Route::group(["middleware" => ["api.auth"]], function () {
-        Route::get("profile", [UserController::class, 'profile'])->name("user.profile");
+        Route::get("profile", [UserController::class, 'profile'])->name("users.profile");
+        Route::get("topics", [UserController::class, 'topics'])->name("users.topics");
+    });
+});
+
+Route::group(["prefix" => "topics"], function () {
+    Route::get(null, [TopicsController::class, 'index'])->name("topics.index");
+    Route::get("{topicCode}", [TopicsController::class, 'show'])->name("topics.show");
+    Route::group(["middleware" => ["api.auth"]], function () {
+        Route::post(null, [TopicsController::class, 'create'])->name("topics.create");
+        Route::post("{topicCode}", [TopicsController::class, 'update'])->name("topics.update");
+        Route::delete("{topicCode}", [TopicsController::class, 'delete'])->name("topics.delete");
     });
 });
